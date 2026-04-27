@@ -173,7 +173,12 @@ button {
 }
 
 .hero-panel img {
-  display: none;
+  display: block;
+}
+
+.circle-img {
+  border-radius: 30%;
+  object-fit: cover; /* Keeps the aspect ratio if the source isn't square */
 }
 
 .eyebrow,

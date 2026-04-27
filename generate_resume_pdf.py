@@ -4,15 +4,7 @@ from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.units import inch
-from reportlab.platypus import (
-    ListFlowable,
-    ListItem,
-    Paragraph,
-    SimpleDocTemplate,
-    Spacer,
-    Table,
-    TableStyle,
-)
+from reportlab.platypus import ListFlowable, ListItem, Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle
 
 
 ROOT = Path(__file__).resolve().parent
@@ -59,7 +51,7 @@ styles.add(
         name="SectionTitle",
         parent=styles["Heading2"],
         fontName="Helvetica-Bold",
-        fontSize=12.6,
+        fontSize=12.3,
         leading=15,
         textColor=colors.HexColor("#1A3C70"),
         spaceBefore=8,
@@ -71,15 +63,15 @@ styles.add(
         name="RoleTitle",
         parent=styles["BodyText"],
         fontName="Helvetica-Bold",
-        fontSize=11.1,
+        fontSize=11,
         leading=13,
         textColor=colors.HexColor("#1C273F"),
         spaceAfter=5,
     )
 )
 styles["BodyText"].fontName = "Helvetica"
-styles["BodyText"].fontSize = 10.2
-styles["BodyText"].leading = 13.8
+styles["BodyText"].fontSize = 10
+styles["BodyText"].leading = 13.4
 styles["BodyText"].textColor = colors.HexColor("#39465E")
 
 
@@ -97,25 +89,25 @@ def bullet_list(items):
 doc = SimpleDocTemplate(
     str(PDF_PATH),
     pagesize=letter,
-    rightMargin=0.6 * inch,
-    leftMargin=0.6 * inch,
-    topMargin=0.55 * inch,
-    bottomMargin=0.55 * inch,
+    rightMargin=0.55 * inch,
+    leftMargin=0.55 * inch,
+    topMargin=0.5 * inch,
+    bottomMargin=0.5 * inch,
 )
 
 story = [
     Paragraph("Neha Runwal", styles["HeroName"]),
     Paragraph(
-        "Product-minded engineer | Enterprise builder | AI and machine learning learner",
+        "Product design, platform engineering, strategic planning, and AI-forward execution",
         styles["Subhead"],
     ),
     Paragraph(
-        "Sunnyvale, California, United States | LinkedIn: linkedin.com/in/neha-runwal-824b4817 | Portfolio created with Codex",
+        "Milpitas, CA | 408-219-7990 | NehaRunwal@gmail.com | linkedin.com/in/neha-runwal-824b4817 | Portfolio created with Codex",
         styles["Meta"],
     ),
-    Paragraph("Professional Summary", styles["SectionTitle"]),
+    Paragraph("Summary", styles["SectionTitle"]),
     Paragraph(
-        "Engineer and builder with publicly visible experience across PayPal, Infosys, and Bloomintek. Combines enterprise delivery instincts, practical internal tooling experience, and product-oriented web thinking. Over the last year, has been actively learning machine learning, exploring AI tools, and experimenting with vibe coding workflows to expand the way software gets designed and shipped.",
+        "17+ years of extensive experience in product design, strategic planning, development, and execution. Ready to take on challenges and improve user experience. Recent focus includes learning machine learning, exploring AI tools, and experimenting with vibe coding workflows.",
         styles["BodyText"],
     ),
     Spacer(1, 0.12 * inch),
@@ -125,25 +117,25 @@ strength_table = Table(
     [
         [
             Paragraph("<b>Core Strengths</b>", styles["BodyText"]),
-            Paragraph("<b>Selected Technologies and Domains</b>", styles["BodyText"]),
+            Paragraph("<b>Technologies and Platforms</b>", styles["BodyText"]),
         ],
         [
             bullet_list(
                 [
-                    "Enterprise engineering and internal tools",
-                    "Product and startup problem solving",
-                    "Fast execution under deadlines",
-                    "Cross-disciplinary innovation thinking",
+                    "Product design, strategic planning, architecture, development, and execution",
+                    "Enterprise compliance, security, monitoring, and risk platforms",
+                    "Team leadership, product strategy, and client-facing requirement translation",
+                    "Startup ownership plus large-scale systems delivery",
                     "AI-forward learning mindset",
                 ]
             ),
             bullet_list(
                 [
-                    "Perl, HTML, Shell Scripting",
-                    "Web Development, Web Design, SaaS Development",
-                    "Artificial Intelligence, Machine Learning, Deep Learning",
-                    "Bioinformatics, Data Science, Intelligent Systems",
-                    "AI tools, prompt workflows, vibe coding, Codex",
+                    "Python, Java, JavaScript, C, C++, Perl, HTML, DHTML, Shell Scripting",
+                    "Ansible, Ajax, jQuery, UNIX",
+                    "MySQL, Oracle, Aerospike",
+                    "NoSQL, Relational Databases, Dashboards, Hybrid Mobile Apps",
+                    "Machine Learning, AI Tools, Vibe Coding, Codex",
                 ]
             ),
         ],
@@ -163,28 +155,51 @@ strength_table.setStyle(
 )
 story += [strength_table, Spacer(1, 0.12 * inch)]
 
-story += [Paragraph("Experience and Career Highlights", styles["SectionTitle"])]
+story += [Paragraph("Professional Experience", styles["SectionTitle"])]
 
 experience_sections = [
     (
-        "Bloomintek | Product-focused software environment",
+        "Stealth Mode Startup | Co-Founder | Apr 2023-Present",
         [
-            "Associated with a company building software, web, branding, and SaaS experiences.",
-            "Brings a builder mindset centered on user experience, digital products, and execution velocity.",
+            "Focused on system architecture and product development.",
+            "Worked across all product stages including end-to-end design, architecture, and development.",
+            "Translated business requirements into technical solutions directly with clients.",
+            "Designed and developed the complete tech stack including frontend, mid-tier, and database layers.",
+            "Technologies: Python, HTML, JavaScript, MySQL.",
         ],
     ),
     (
-        "PayPal | Enterprise software experience",
+        "PayPal, San Jose | Member of Technical Staff | Mar 2012-Mar 2023",
         [
-            "Public profile summary references more than two years of experience at PayPal.",
-            "Recognized with the Blue Moon Award for the Risk Sandbox project tied to Q3-Q4 2012 work.",
+            "Led compliance and security-related projects in the database team.",
+            "Developed a monitoring platform for Aerospike across 2600+ servers and adjacent database systems.",
+            "Evaluated roadmap, defined product strategies, designed features, led a team of 6+, and delivered against client requirements.",
+            "Earlier built risk and fraud monitoring applications for 150+ services, plus web and hybrid mobile experiences for remote health and alert checks.",
+            "Hosted technical expos and talks, joined hackathons, encouraged team participation, and won BeatCTF.",
+            "Completed machine learning coursework and delivered introductory ML sessions internally.",
         ],
     ),
     (
-        "Infosys | Early engineering impact",
+        "PayPal, San Jose | Summer Intern - Software Engineer | Jun 2011-Nov 2011",
         [
-            "Received the Bravo Award for creating a Weekend Support Tool in three days.",
-            "Work explicitly referenced Perl, HTML, and shell scripting.",
+            "Implemented Python-based monitoring modules interacting with MySQL data sources.",
+            "Built one-pager application health views, alert dashboards, and a critical risk asset web application.",
+            "Showcased dashboards during the university program and earned appreciation from Risk leaders.",
+        ],
+    ),
+    (
+        "Infosys, Pune | Senior Systems Engineer | Feb 2007-Feb 2010",
+        [
+            "Developed requirements in C++ using object-oriented programming.",
+            "Handled black-box and white-box testing in UNIX.",
+            "Automated test environments using shell scripting and Perl.",
+            "Solved live issues while adhering to standard processes.",
+        ],
+    ),
+    (
+        "Cummins College of Engineering | Part-time Teaching Assistant | Jul 2006-Dec 2006",
+        [
+            "Six months of teaching assistantship experience at the beginning of the professional journey.",
         ],
     ),
 ]
@@ -192,35 +207,32 @@ experience_sections = [
 for title, items in experience_sections:
     story.append(Paragraph(title, styles["RoleTitle"]))
     story.append(bullet_list(items))
-    story.append(Spacer(1, 0.06 * inch))
+    story.append(Spacer(1, 0.05 * inch))
 
 story += [
-    Paragraph("Education and Learning", styles["SectionTitle"]),
-    Paragraph(
-        "University of Cincinnati - College of Engineering and Applied Science | 2021-2022",
-        styles["RoleTitle"],
-    ),
+    Paragraph("Education", styles["SectionTitle"]),
     bullet_list(
         [
-            "Graduate Incentive Award: 30% tuition-waiver scholarship.",
-            "Relevant coursework included Artificial Intelligence, Machine Learning, Deep Learning, Bioinformatics, Data Science for Biomedical Research, Intelligent Systems, Intelligent Data Analysis, Innovation Design Thinking, and Interdisciplinary Innovation for Engineers.",
-            "Over the last year: focused on machine learning, AI tools, and vibe coding exploration.",
+            "M.S. in Computer Science, San Jose State University, CA | Dec 2011 | GPA 3.85",
+            "B.E. in Computer Engineering, University of Pune, India | May 2006 | First Class with Distinction",
         ]
     ),
-    Spacer(1, 0.08 * inch),
-    Paragraph("Awards and Recognition", styles["SectionTitle"]),
+    Spacer(1, 0.05 * inch),
+    Paragraph("Conference Paper and Publication", styles["SectionTitle"]),
     bullet_list(
         [
-            "Blue Moon Award, PayPal (June 2013) for the Risk Sandbox project.",
-            "Bravo Award, Infosys (October 2009) for a Weekend Support Tool built in three days.",
-            "FlyOhio Innovation Challenge 2021 - Second Place (Judges' choice) for a drone ecosystem innovation proposal.",
-            "Graduate Incentive Award, University of Cincinnati (August 2020).",
+            "Presented at SVG Open 2011: “Drag and drop functionality for SVG using jQuery”.",
+            "Published online in Journal in Computer Virology on April 3, 2012: “Opcode graph similarity and metamorphic detection”.",
         ]
     ),
-    Spacer(1, 0.08 * inch),
-    Paragraph(
-        "<b>Note:</b> This resume was assembled from publicly visible professional information and the candidate's explicitly provided current AI/ML learning direction.",
-        styles["BodyText"],
+    Spacer(1, 0.05 * inch),
+    Paragraph("Awards", styles["SectionTitle"]),
+    bullet_list(
+        [
+            "4 Spot Awards at Infosys for critical initiatives and projects successfully led and delivered.",
+            "PayPal Blue Moon Award for successfully delivering Sandbox Risk in 2012 within a few months of joining.",
+            "Infosys Bravo Award for developing a weekend support application using Perl and shell script within 3 days.",
+        ]
     ),
 ]
 
